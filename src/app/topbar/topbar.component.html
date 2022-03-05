@@ -1,0 +1,33 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img src="assets/layout/images/logo_horizontal_web.png" alt="logo">
+        <span>Sistema Integrado</span>
+    </a>
+
+    <a class="p-link layout-menu-button layout-topbar-button" href="#" (click)="app.toggleMenu($event)">
+        <i class="pi pi-bars"></i>
+    </a>
+
+    <a class="p-link layout-topbar-menu-button layout-topbar-button" href="#" >
+        <i class="pi pi-ellipsis-v"></i>
+    </a>
+
+    <div class="layout-topbar-menu" >
+        <p-chip  label="Usuario: {{username  | uppercase }}"  styleClass="custom-chip"></p-chip>
+<!--         <a href="#" class="p-link layout-topbar-button">
+            <i class="pi pi-calendar"></i>
+            <span>Calendar</span>
+        </a>
+        <a href="#" class="p-link layout-topbar-button">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
+        </a>
+       
+        <a href="#" class="p-link layout-topbar-button">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </a>
+    -->
+
+    </div>
+</div>
