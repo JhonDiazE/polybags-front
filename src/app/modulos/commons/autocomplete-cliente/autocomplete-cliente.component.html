@@ -1,0 +1,14 @@
+
+<div  style="font-weight: bold; margin-bottom: 5px;">
+    Cliente:
+    
+        <p-autoComplete [(ngModel)]="selectedCliente" [suggestions]="filteredClientes" (completeMethod)="filterCountry($event)" field="name" 
+        [dropdown]="true" field="razonSocial"  [size]="120">
+            <ng-template let-cliente pTemplate="item">
+                <div class="country-item">
+                    <div>{{cliente.razonSocial}}</div>
+                </div>
+            </ng-template>
+        </p-autoComplete>
+
+</div>

@@ -23,6 +23,7 @@ import { MessageService } from 'primeng/api';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ChipModule } from 'primeng/chip';
 import {ToastModule} from 'primeng/toast';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
   declarations: [

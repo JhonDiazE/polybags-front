@@ -3,6 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NuevaCotizacionComponent } from './nueva-cotizacion/nueva-cotizacion.component';
 import { RouterModule, Routes } from '@angular/router';
 import {TabViewModule} from 'primeng/tabview';
+import { CommonsModule } from '../commons/commons.module';
+import {FieldsetModule} from 'primeng/fieldset';
+import {InputTextModule} from 'primeng/inputtext';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {TableModule} from 'primeng/table';
 
 const routes: Routes = [
   {
@@ -24,6 +32,14 @@ const routes: Routes = [
     NuevaCotizacionComponent
   ],
   imports: [
+    TableModule,
+    InputSwitchModule,
+    InputNumberModule,
+    InputTextareaModule,
+    DropdownModule,
+    InputTextModule,
+    FieldsetModule,
+    CommonsModule,
     CommonModule,
     TabViewModule,
     RouterModule.forChild(routes)

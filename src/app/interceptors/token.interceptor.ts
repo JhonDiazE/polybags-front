@@ -10,20 +10,20 @@ import { SessionService } from '../service/session.service';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private authService: SessionService) { }
+  constructor(private sessionService:SessionService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
-    // let token = this.authService.getToken();
+     let token = this.sessionService.getkey();
 
-    // if (token != null) {
-    //   const authReq = req.clone({
-    //     headers: req.headers.set('Authorization', 'Bearer ' + token)
-    //   });
+     if (token != null) {
+       const authReq = req.clone({
+         headers: req.headers.set('Authorization', token)
+       });
 
-    //   return next.handle(authReq);
-    // }
-   // console.log("Intecec",req.headers);
+       return next.handle(authReq);
+    }
+    //console.log("Intecec",req.headers);
     return next.handle(req);
   }
 }

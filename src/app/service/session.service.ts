@@ -11,7 +11,7 @@ export class SessionService {
   public setValue(value:string ):void{
     this.storageService.set("key",value) ;
   }
-  public getValue(value:string ):string{
+  public getkey():string{
     return this.storageService.get("key") ;
   }
 

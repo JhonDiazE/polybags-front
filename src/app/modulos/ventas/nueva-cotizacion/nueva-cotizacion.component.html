@@ -7,9 +7,441 @@
                     <i class="pi pi-fw pi-pencil"></i>
                     <span>Nueva Cotización</span>
                 </ng-template>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <app-autocomplete-cliente></app-autocomplete-cliente>
+                <p-fieldset legend=" Datos del producto" >
+                      <div class="grid p-fluid">
+                        <div class="col-12 md:col-4">
+                            Familia:
+                        </div>
+                        
+                        <div class="col-12 md:col-4">
+                            Linea:
+                        </div>
+                                
+                        <div class="col-12 md:col-4">
+                          Categoria:
+                        </div>
+                    </div>
+
+                      <div class="grid p-fluid">
+                        <div class="col-12 md:col-4">
+                                <p-dropdown  placeholder="Seleccione la familia" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        
+                        <div class="col-12 md:col-4">
+                                <p-dropdown  placeholder="Seleccione la linea" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                                
+                        <div class="col-12 md:col-4">
+                                <p-dropdown  placeholder="Seleccione la categoria" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-6">
+                        Descripcion Producto Interno:
+                      </div>
+                      <div class="col-12 md:col-6">
+                        Descripcion Producto Externo (Doc. Cliente):
+                      </div>
+                    </div>
+                   
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-6">
+                        <textarea rows="3" cols="30" pInputTextarea></textarea>
+                      </div>
+                      <div class="col-12 md:col-6">
+                        <textarea rows="3" cols="30" pInputTextarea></textarea>
+                      </div>
+                    </div>
+
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-3">
+                        Unidad Kardex: 
+                      </div>
+                      <div class="col-12 md:col-3">
+                        Peso Calc aprox (x 1 MIL): 
+                      </div>
+                  </div>
+
+
+                  <div class="grid p-fluid">
+                    <div class="col-12 md:col-3">
+                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-12 md:col-3">
+                      <input type="text" pInputText >                     
+                    </div>
+                </div>
+
+                </p-fieldset>
+
+
+                <br>
+                <p-fieldset legend=" Medidas del producto" >
+                  <div class="grid p-fluid">
+                      <div class="col-12 md:col-3">
+                        Und. Longitud:
+                      </div>
+                      
+                      <div class="col-12 md:col-3">
+                        Ancho :	
+                      </div>
+                              
+                      <div class="col-12 md:col-3">
+                        Largo :	
+                      </div>
+
+                      
+                      <div class="col-12 md:col-3">
+                        Espesor :
+                      </div>
+                  </div>
+
+                  <div class="grid p-fluid">
+                    <div class="col-12 md:col-3">
+                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                    </div>
+                    
+                    <div class="col-12 md:col-3">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <span class="p-inputgroup-addon">MM</span>      
+                      </div> 
+                    </div>
+                            
+                    <div class="col-12 md:col-3">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <span class="p-inputgroup-addon">MM</span>      
+                      </div>
+                    </div>
+
+                    
+                    <div class="col-12 md:col-3">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                      </div>
+                    </div>
+                </div>
+
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-3">
+                        Ancho Des:
+                      </div>
+                      
+                      <div class="col-12 md:col-3">
+                        Largo Des:
+                      </div>
+                              
+                      <div class="col-12 md:col-3">
+                        Ancho Util Sustrato:
+                      </div>
+
+                      
+                      <div class="col-12 md:col-3">
+                        Forma Sustrato Des :
+                      </div>
+                  </div>
+
+                      <div class="grid p-fluid">
+                        <div class="col-12 md:col-3">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText >  
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div> 
+                          
+                        </div>
+                        
+                        <div class="col-12 md:col-3">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText >  
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div> 
+                        </div>
+                                
+                        <div class="col-12 md:col-3">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText >  
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div>
+                        </div>
+
+                        
+                        <div class="col-12 md:col-3">
+                          <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                    </div>
+                    <span style="color: blueviolet;">(*) Considerar el Producto como Lámina abierta</span>
+                </p-fieldset>
+
+
+                <br>
+                <p-fieldset legend=" Desarrollo Impresión/Laminado" >
+                  <div class="grid p-fluid">
+                      <div class="col-12 md:col-2">
+                        Nro Bandas:	
+                      </div>
+                      
+                      <div class="col-12 md:col-2">
+                        Ancho Banda :	
+                      </div>
+                              
+                      <div class="col-12 md:col-2">
+                        Ancho Imp/Lam:		
+                      </div>
+
+                      
+                      <div class="col-12 md:col-2">
+                        Nro Repet.:
+                      </div>
+
+                      <div class="col-12 md:col-2">
+                        Largo Repet. :		
+                      </div>
+
+                      
+                      <div class="col-12 md:col-2">
+                        Frec. Imp/Lam.:
+                      </div>
+                  </div>
+
+                      <div class="grid p-fluid">
+                        <div class="col-12 md:col-2">
+                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                              decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
+                              decrementButtonIcon="pi pi-minus" >
+                              </p-inputNumber>
+                          
+                        </div>
+                        
+                        <div class="col-12 md:col-2">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText >  
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div> 
+                        </div>
+                                
+                        <div class="col-12 md:col-2">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText >  
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div>
+                        </div>
+
+                        
+                        <div class="col-12 md:col-2">
+                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                              decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
+                              decrementButtonIcon="pi pi-minus" >
+                              </p-inputNumber> 
+                        </div>
+                        
+                        <div class="col-12 md:col-2">
+                          <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        
+                        <div class="col-12 md:col-2">
+                          <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-1">
+                        Impresion:	
+                      </div>
+                      <div class="col-12 md:col-11">
+                        Texto Referencia:	
+                      </div>
+                    </div>
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-1">
+                        <p-inputSwitch ></p-inputSwitch>	
+                      </div>
+                      <div class="col-12 md:col-11">
+                        <input type="text" pInputText > 	
+                      </div>
+                    </div>
+                    
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-4">
+                        Tipo Impresion:	
+                      </div>
+                      <div class="col-12 md:col-4">
+                        Nro de Colores:	
+                      </div>
+                      <div class="col-12 md:col-4">
+                        Nro de Cilindros:	
+                      </div>
+                    </div>
+
+
+
+                    <div class="grid p-fluid">
+                      <div class="col-12 md:col-4">
+                        <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                      </div>
+                      
+                      
+                      <div class="col-12 md:col-4">
+                        <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
+                            decrementButtonIcon="pi pi-minus" >
+                            </p-inputNumber> 
+                      </div>
+
+                      <div class="col-12 md:col-4">
+                        <div class="p-inputgroup">
+                          <input type="text" pInputText >  
+                          <span class="p-inputgroup-addon">MM</span>      
+                        </div> 
+                      </div>
+                    </div>
+                </p-fieldset>
+
+
+                <br>
+                <p-fieldset legend=" Datos Accesorios" >
+                  <div class="grid p-fluid">
+                      <div class="col-12 md:col-1">
+                        Zipper:	
+                      </div>
+                      
+                      <div class="col-12 md:col-1">
+                        Válvula :	
+                      </div>
+                              
+                      <div class="col-12 md:col-5">
+                          Peso Zipper 1mL:		
+                      </div>
+
+                      
+                      <div class="col-12 md:col-5">
+                        Peso Válvula 1Und:
+                      </div>
+                  </div>
+
+                  <div class="grid p-fluid">
+                    <div class="col-12 md:col-1">
+                      <p-inputSwitch ></p-inputSwitch>	
+                    </div>
+                    
+                    
+                    <div class="col-12 md:col-1">
+                      <p-inputSwitch ></p-inputSwitch>	
+                    </div>
+
+                    <div class="col-12 md:col-5">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <span class="p-inputgroup-addon">GR</span>      
+                      </div> 
+                    </div>
+                    <div class="col-12 md:col-5">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <span class="p-inputgroup-addon">GR</span>      
+                      </div> 
+                    </div>
+                  </div>
+                </p-fieldset>
+
+                <br>
+                <p-fieldset legend=" Estructura del Producto" >
+                  <div class="grid p-fluid">
+                      <div class="col-12 md:col-1">
+                        Peso x Millar:	
+                      </div>
+                      
+                      <div class="col-12 md:col-1">
+                        PesoMillarAd:	
+                      </div>
+                              
+                      <div class="col-12 md:col-1">
+                        PesoMillarTotal:		
+                      </div>
+
+                      
+                      <div class="col-12 md:col-3">
+                        Tipo Producto:
+                      </div>
+
+                      <div class="col-12 md:col-2">
+                        Estructura :
+                      </div>
+                      <div class="col-12 md:col-2">
+                        Gramaje Total:
+                      </div>
+                      <div class="col-12 md:col-2">
+                        Ancho Util Des:
+                      </div>
+                  </div>
+
+                  <div class="grid p-fluid">
+                    <div class="col-12 md:col-1">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText readonly>  
+                        <span class="p-inputgroup-addon">GR</span>      
+                      </div> 	
+                    </div>
+                    
+                    <div class="col-12 md:col-1">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText readonly>  
+                        <span class="p-inputgroup-addon">GR</span>      
+                      </div> 		
+                    </div>
+                            
+                    <div class="col-12 md:col-1">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText readonly>  
+                        <span class="p-inputgroup-addon">GR</span>      
+                      </div> 		
+                    </div>
+
+                    
+                    <div class="col-12 md:col-3">
+                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                    </div>
+
+                    <div class="col-12 md:col-2">
+                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-12 md:col-2">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <span class="p-inputgroup-addon">GR/M2</span>      
+                      </div>
+                    </div>
+                    <div class="col-12 md:col-2">
+                      <div class="p-inputgroup">
+                        <input type="text" pInputText >  
+                        <span class="p-inputgroup-addon">MM</span>      
+                      </div>
+                    </div>
+                </div>
+
+
+                <p-table responsiveLayout="scroll" >
+                      <ng-template pTemplate="header">
+                          <tr>
+                              <th>Ord</th>
+                              <th>Capas</th>
+                              <th>Dens. (gr/cm3)</th>
+                              <th>Esp. (Mil/pulg)</th>
+                              <th>Esp. (µ)</th>
+                              <th>Gramaje (gr/m2)	</th>
+                              <th>Porc. %	Ancho (mm)</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">No se encontraron registros.</td>
+                        </tr>
+                    </ng-template>
+                  </p-table>
+                </p-fieldset>
             </p-tabPanel>
             <p-tabPanel header="Header II">
                 <ng-template pTemplate = "header">
