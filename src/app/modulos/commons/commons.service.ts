@@ -12,7 +12,6 @@ export class CommonsService {
   constructor(public http: HttpClient) { }
 
   getAllClientes(): Observable<Cliente[]> {
-    debugger;
     const url = environment.apiUrlBase + 'cliente';
     return this.http.get<Cliente[]>(url).pipe(
       catchError(e=>{

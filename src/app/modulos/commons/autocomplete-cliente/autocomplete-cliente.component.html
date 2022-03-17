@@ -3,10 +3,10 @@
     Cliente:
     
         <p-autoComplete [(ngModel)]="selectedCliente" [suggestions]="filteredClientes" (completeMethod)="filterCountry($event)" field="name" 
-        [dropdown]="true" field="razonSocial"  [size]="120">
+        [dropdown]="true" field="nombreComercial"  [size]="120" [forceSelection]="true">
             <ng-template let-cliente pTemplate="item">
                 <div class="country-item">
-                    <div>{{cliente.razonSocial}}</div>
+                    <div>{{cliente.nombreComercial}}</div>
                 </div>
             </ng-template>
         </p-autoComplete>

@@ -38,7 +38,7 @@ export class AutocompleteClienteComponent implements OnInit {
     let filtered : Cliente[] = [];
     let query = event.query;
     this.clientes.forEach(e=>{
-      if (e.razonSocial.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+      if (e.nombreComercial.toLowerCase().indexOf(query.toLowerCase()) == 0) {
         filtered.push(e);
     }
     });

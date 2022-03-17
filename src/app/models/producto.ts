@@ -1,0 +1,44 @@
+import { Categoria } from "./categoria";
+import { Color } from "./color";
+import { Linea } from "./linea";
+import { Unidad } from "./unidad";
+
+export interface Producto {
+    id:string;
+	descripcion:string;
+	unidad:Unidad;
+	linea:Linea;
+	categoria:Categoria;
+	color:Color;
+	precio:number;
+	tipoMonedaPrecio:string; 
+	estado:string;
+	descripcionComercial:string;
+    pesoCalculado:number;
+    tipoMedida:string;
+	tipoMedidaEspesor:string;
+	ancho:number;
+	largo:number;
+	espesor:number;
+	espesorPulgada:number;
+	anchoPulgada:number;
+	largoPulgada:number;
+	anchoMilimetro:number;
+	largoMilimetro:number;	
+	textoImpresion:string;
+	sellado:string;
+	fuelle:string;
+	adicional:string;
+	estadoProductoVenta:string;
+	espesorGramoMt2:number;
+	anchoDesarrollo:number;
+	largoDesarrollo:number;
+	margenBalanzaKg:number;
+	millaresProyectadosPt:number;
+	kilosProyectadosPt:number;
+	metrosProyectadosPt:number;
+	numeroBandas:number;
+	anchoUtilDesarrollo:number;
+	tipoControlStock:string;
+	tipoProductoVenta:string;
+}

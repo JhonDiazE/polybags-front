@@ -11,6 +11,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {TableModule} from 'primeng/table';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
     NuevaCotizacionComponent
   ],
   imports: [
+    FormsModule,
     TableModule,
     InputSwitchModule,
     InputNumberModule,

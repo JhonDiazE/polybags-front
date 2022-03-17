@@ -5,6 +5,7 @@
 export const environment = {
 
   production: false,
+  idEmpresa : 1,
   apiUrlBase: 'http://localhost:9091/'
 
 };

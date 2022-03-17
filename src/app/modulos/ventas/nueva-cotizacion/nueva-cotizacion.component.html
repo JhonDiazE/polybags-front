@@ -25,15 +25,51 @@
 
                       <div class="grid p-fluid">
                         <div class="col-12 md:col-4">
-                                <p-dropdown  placeholder="Seleccione la familia" optionLabel="name" [showClear]="true"></p-dropdown>
+                            <p-dropdown [options]="especialidades" [(ngModel)]="selectedEspecialidad" optionLabel="descripcion" (onChange)="seleccionarEspecialidad($event)"
+                                  [filter]="true" filterBy="descripcion" [showClear]="true" placeholder="Seleccione una familia">
+                                <ng-template pTemplate="selectedItem">
+                                    <div class="country-item country-item-value"  *ngIf="selectedEspecialidad">
+                                        <div>{{selectedEspecialidad.descripcion}}</div>
+                                    </div>
+                                </ng-template>
+                                <ng-template let-especialidad pTemplate="item">
+                                    <div class="especialidad-item">
+                                        <div>{{especialidad.descripcion}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
                         </div>
                         
                         <div class="col-12 md:col-4">
-                                <p-dropdown  placeholder="Seleccione la linea" optionLabel="name" [showClear]="true"></p-dropdown>
+                            <p-dropdown [options]="lineas" [(ngModel)]="producto.linea" optionLabel="descripcion" (onChange)="seleccionarLinea($event)"
+                              [filter]="true" filterBy="descripcion" [showClear]="true" placeholder="Seleccione una linea">
+                              <ng-template pTemplate="selectedItem">
+                                  <div class="country-item country-item-value"  *ngIf="producto.linea">
+                                      <div>{{producto.linea.descripcion}}</div>
+                                  </div>
+                              </ng-template>
+                              <ng-template let-linea pTemplate="item">
+                                  <div class="linea-item">
+                                      <div>{{linea.descripcion}}</div>
+                                  </div>
+                              </ng-template>
+                          </p-dropdown>
                         </div>
                                 
                         <div class="col-12 md:col-4">
-                                <p-dropdown  placeholder="Seleccione la categoria" optionLabel="name" [showClear]="true"></p-dropdown>
+                              <p-dropdown [options]="categorias" [(ngModel)]="producto.categoria" optionLabel="descripcion" (onChange)="seleccionarCategoria($event)"
+                                [filter]="true" filterBy="descripcion" [showClear]="true" placeholder="Seleccione una categoria">
+                                <ng-template pTemplate="selectedItem">
+                                    <div class="country-item country-item-value"  *ngIf="producto.categoria">
+                                        <div>{{producto.categoria.descripcion}}</div>
+                                    </div>
+                                </ng-template>
+                                <ng-template let-categoria pTemplate="item">
+                                    <div class="categoria-item">
+                                        <div>{{categoria.descripcion}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
                         </div>
                     </div>
 
@@ -48,10 +84,10 @@
                    
                     <div class="grid p-fluid">
                       <div class="col-12 md:col-6">
-                        <textarea rows="3" cols="30" pInputTextarea></textarea>
+                        <textarea rows="3" cols="30" pInputTextarea [(ngModel)]="producto.descripcion"></textarea>
                       </div>
                       <div class="col-12 md:col-6">
-                        <textarea rows="3" cols="30" pInputTextarea></textarea>
+                        <textarea rows="3" cols="30" pInputTextarea [(ngModel)]="producto.descripcionComercial"></textarea>
                       </div>
                     </div>
 
@@ -60,17 +96,30 @@
                         Unidad Kardex: 
                       </div>
                       <div class="col-12 md:col-3">
-                        Peso Calc aprox (x 1 MIL): 
+                        Peso Calc aprox (x 1 {{producto.unidad!=null ? producto.unidad.abreviatura: ''}}): 
                       </div>
                   </div>
 
 
                   <div class="grid p-fluid">
                     <div class="col-12 md:col-3">
-                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                      <p-dropdown [options]="unidades" [(ngModel)]="producto.unidad" optionLabel="descripcion" (onChange)="crearProducto()"
+                            [filter]="true" filterBy="descripcion" [showClear]="true" placeholder="Seleccione una unidad">
+                            <ng-template pTemplate="selectedItem">
+                                <div class="country-item country-item-value"  *ngIf="producto.unidad">
+                                    <div>{{producto.unidad.descripcion}}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-unidad pTemplate="item">
+                                <div class="unidad-item">
+                                    <div>{{unidad.descripcion}}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
                     </div>
+
                     <div class="col-12 md:col-3">
-                      <input type="text" pInputText >                     
+                      <input type="text" pInputText [(ngModel)]="producto.pesoCalculado">                     
                     </div>
                 </div>
 
@@ -100,7 +149,8 @@
 
                   <div class="grid p-fluid">
                     <div class="col-12 md:col-3">
-                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                      <p-dropdown [options]="tipoMedidas" [(ngModel)]="producto.tipoMedida" placeholder="Seleccione una unidad de medida"  (onChange)="crearProducto()"
+                           optionValue="code" optionLabel="name" [showClear]="true"></p-dropdown>
                     </div>
                     
                     <div class="col-12 md:col-3">
@@ -119,9 +169,10 @@
 
                     
                     <div class="col-12 md:col-3">
-                      <div class="p-inputgroup">
-                        <input type="text" pInputText >  
-                        <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                      <div>
+                        <input type="text" pInputText style="width: 35%; float: left">  
+                        <p-dropdown [options]="tipoMedidasEspesor" [(ngModel)]="producto.tipoMedidaEspesor" placeholder="Seleccione unidad de medida" 
+                           optionValue="code" optionLabel="name" [showClear]="true" [style]="{'width':'65%', 'float': 'right'}" ></p-dropdown>
                       </div>
                     </div>
                 </div>
