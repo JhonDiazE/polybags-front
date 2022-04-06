@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
         },
         error: (error)=>{
-          debugger;
           this.messageService.add({severity:'error', summary: 'Error', 
                   detail: 'No se pudo iniciar sesion, revise sus credenciales porfavor'});
         },

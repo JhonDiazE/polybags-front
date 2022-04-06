@@ -1,6 +1,8 @@
 import { Categoria } from "./categoria";
 import { Color } from "./color";
+import { ConfiguracionCotizacion } from "./configuracion-cotizacion";
 import { Linea } from "./linea";
+import { ParametroEstadoGeneral } from "./parametro-estado-general";
 import { Unidad } from "./unidad";
 
 export interface Producto {
@@ -41,4 +43,21 @@ export interface Producto {
 	anchoUtilDesarrollo:number;
 	tipoControlStock:string;
 	tipoProductoVenta:string;
+	pesoZipperUnd:number;
+	pesoValvulaUnd:number;
+	pesoCalculadoAdicional:number;
+	formaSustratoDesarrollo:string;
+	anchoImpresion:number;
+	frecuenciaImpresion:number;
+	anchoBandaImpresion:number;
+	largoRepeticionImpresion:number;
+	numeroRepeticiones:number;
+	impresion:string;
+	numeroCilindro:string;
+	numeroColores:string;
+	tipoImpresion:string;
+	estadoZipper:string;
+	estadoValvula:string;
+	parametroEstadoGeneralCotizacion:ParametroEstadoGeneral;
+	configuracionCotizacion:ConfiguracionCotizacion;
 }

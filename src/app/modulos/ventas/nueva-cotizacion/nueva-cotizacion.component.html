@@ -155,23 +155,27 @@
                     
                     <div class="col-12 md:col-3">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText >  
-                        <span class="p-inputgroup-addon">MM</span>      
+                        <input type="text" pInputText  [(ngModel)]="producto.ancho" *ngIf="producto.tipoMedida == 'CM'"  (input)="calcularAnchoCm()" >
+                        <input type="text" pInputText  [(ngModel)]="producto.anchoPulgada" *ngIf="producto.tipoMedida == 'PU'" (input)="calcularAnchoPulg()">
+                        <input type="text" pInputText  [(ngModel)]="producto.anchoMilimetro" *ngIf="producto.tipoMedida == 'MM'" (input)="calcularAnchoMm()">  
+                        <span class="p-inputgroup-addon">{{producto.tipoMedida}}.</span>      
                       </div> 
                     </div>
                             
                     <div class="col-12 md:col-3">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText >  
-                        <span class="p-inputgroup-addon">MM</span>      
+                        <input type="text" pInputText  [(ngModel)]="producto.largo" *ngIf="producto.tipoMedida == 'CM'"  (input)="calcularLargoCm()" >
+                        <input type="text" pInputText  [(ngModel)]="producto.largoPulgada" *ngIf="producto.tipoMedida == 'PU'" (input)="calcularLargoPulg()">
+                        <input type="text" pInputText  [(ngModel)]="producto.largoMilimetro" *ngIf="producto.tipoMedida == 'MM'" (input)="calcularLargoMm()">  
+                        <span class="p-inputgroup-addon">{{producto.tipoMedida}}.</span>      
                       </div>
                     </div>
 
                     
                     <div class="col-12 md:col-3">
                       <div>
-                        <input type="text" pInputText style="width: 35%; float: left">  
-                        <p-dropdown [options]="tipoMedidasEspesor" [(ngModel)]="producto.tipoMedidaEspesor" placeholder="Seleccione unidad de medida" 
+                        <input type="text" pInputText  [(ngModel)]="producto.espesor"  (input)="changeEspesorProducto()" style="width: 35%;">
+                        <p-dropdown [options]="tipoMedidasEspesor" [(ngModel)]="producto.tipoMedidaEspesor" placeholder="Seleccione unidad de medida" (onChange)="changeEspesorProducto()"
                            optionValue="code" optionLabel="name" [showClear]="true" [style]="{'width':'65%', 'float': 'right'}" ></p-dropdown>
                       </div>
                     </div>
@@ -199,29 +203,30 @@
                       <div class="grid p-fluid">
                         <div class="col-12 md:col-3">
                           <div class="p-inputgroup">
-                            <input type="text" pInputText >  
-                            <span class="p-inputgroup-addon">MM</span>      
+                              <input type="text" pInputText  [(ngModel)]="producto.anchoDesarrollo"   (input)="calcularPeso()" >  
+                              <span class="p-inputgroup-addon">MM</span>        
                           </div> 
                           
                         </div>
                         
                         <div class="col-12 md:col-3">
                           <div class="p-inputgroup">
-                            <input type="text" pInputText >  
+                            <input type="text" pInputText  [(ngModel)]="producto.largoDesarrollo"   (input)="calcularPeso()" >  
                             <span class="p-inputgroup-addon">MM</span>      
                           </div> 
                         </div>
                                 
                         <div class="col-12 md:col-3">
                           <div class="p-inputgroup">
-                            <input type="text" pInputText >  
+                            <input type="text" pInputText  [(ngModel)]="producto.anchoUtilDesarrollo"    >  
                             <span class="p-inputgroup-addon">MM</span>      
                           </div>
                         </div>
 
                         
                         <div class="col-12 md:col-3">
-                          <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                          <p-dropdown [options]="formatosSustrato" [(ngModel)]="producto.formaSustratoDesarrollo" placeholder="Seleccione un formato" 
+                              optionValue="code" optionLabel="name" [showClear]="true" [style]="{'width':'100%', 'float': 'right'}" ></p-dropdown>
                         </div>
                     </div>
                     <span style="color: blueviolet;">(*) Considerar el Producto como Lámina abierta</span>
@@ -231,72 +236,87 @@
                 <br>
                 <p-fieldset legend=" Desarrollo Impresión/Laminado" >
                   <div class="grid p-fluid">
-                      <div class="col-12 md:col-2">
+                      <div class="col-12 md:col-4">
                         Nro Bandas:	
                       </div>
                       
-                      <div class="col-12 md:col-2">
+                      <div class="col-12 md:col-4">
                         Ancho Banda :	
                       </div>
                               
-                      <div class="col-12 md:col-2">
+                      <div class="col-12 md:col-4">
                         Ancho Imp/Lam:		
                       </div>
 
-                      
-                      <div class="col-12 md:col-2">
+                  </div>
+
+                      <div class="grid p-fluid">
+                        <div class="col-12 md:col-4">
+                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                              decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
+                              decrementButtonIcon="pi pi-minus"  [(ngModel)]="producto.numeroBandas" (onInput)="calcularAnchoFrecuenciaImpresion('A')" >
+                          </p-inputNumber>
+                          
+                        </div>
+                        
+                        <div class="col-12 md:col-4">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText  [(ngModel)]="producto.anchoBandaImpresion"   (input)="calcularAnchoFrecuenciaImpresion('A')" >  
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div> 
+                        </div>
+                                
+                        <div class="col-12 md:col-4">
+                          <div class="p-inputgroup">
+                            <input type="text" pInputText  [(ngModel)]="producto.anchoImpresion"  [disabled]="true">   
+                            <span class="p-inputgroup-addon">MM</span>      
+                          </div>
+                        </div>
+
+                   
+                    </div>
+
+                    <div class="grid p-fluid">
+                     
+                      <div class="col-12 md:col-4">
                         Nro Repet.:
                       </div>
 
-                      <div class="col-12 md:col-2">
+                      <div class="col-12 md:col-4">
                         Largo Repet. :		
                       </div>
 
                       
-                      <div class="col-12 md:col-2">
+                      <div class="col-12 md:col-4">
                         Frec. Imp/Lam.:
                       </div>
                   </div>
 
                       <div class="grid p-fluid">
-                        <div class="col-12 md:col-2">
-                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                        
+                        <div class="col-12 md:col-4">
+                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1" [min]="1" [max]="20"
                               decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
-                              decrementButtonIcon="pi pi-minus" >
-                              </p-inputNumber>
-                          
+                              decrementButtonIcon="pi pi-minus"  [(ngModel)]="producto.numeroRepeticiones" (onInput)="calcularAnchoFrecuenciaImpresion('F')" >
+                          </p-inputNumber>
                         </div>
                         
-                        <div class="col-12 md:col-2">
-                          <div class="p-inputgroup">
-                            <input type="text" pInputText >  
-                            <span class="p-inputgroup-addon">MM</span>      
-                          </div> 
-                        </div>
-                                
-                        <div class="col-12 md:col-2">
-                          <div class="p-inputgroup">
-                            <input type="text" pInputText >  
-                            <span class="p-inputgroup-addon">MM</span>      
-                          </div>
-                        </div>
-
-                        
-                        <div class="col-12 md:col-2">
-                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
-                              decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
-                              decrementButtonIcon="pi pi-minus" >
-                              </p-inputNumber> 
+                        <div class="col-12 md:col-4">
+                            <div class="p-inputgroup">
+                              <input type="text" pInputText  [(ngModel)]="producto.largoRepeticionImpresion"   (input)="calcularAnchoFrecuenciaImpresion('F')" >  
+                              <span class="p-inputgroup-addon">MM</span>      
+                            </div> 
                         </div>
                         
-                        <div class="col-12 md:col-2">
-                          <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
-                        </div>
-                        
-                        <div class="col-12 md:col-2">
-                          <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                        <div class="col-12 md:col-4">
+                            <div class="p-inputgroup">
+                              <input type="text" pInputText  [(ngModel)]="producto.frecuenciaImpresion"  [disabled]="true">   
+                              <span class="p-inputgroup-addon">MM</span>
+                            </div>
                         </div>
                     </div>
+
+
 
                     <div class="grid p-fluid">
                       <div class="col-12 md:col-1">
@@ -308,10 +328,12 @@
                     </div>
                     <div class="grid p-fluid">
                       <div class="col-12 md:col-1">
-                        <p-inputSwitch ></p-inputSwitch>	
+                        <p-inputSwitch  [(ngModel)]="producto.impresion" trueValue="S" falseValue="N"
+                        (onChange)="changeImpresion()"></p-inputSwitch>	
                       </div>
                       <div class="col-12 md:col-11">
-                        <input type="text" pInputText > 	
+                        <input type="text" pInputText  [(ngModel)]="producto.textoImpresion"   (input)="crearProducto()" 
+                               [disabled]="producto.impresion=='N'"> 
                       </div>
                     </div>
                     
@@ -331,21 +353,25 @@
 
                     <div class="grid p-fluid">
                       <div class="col-12 md:col-4">
-                        <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
+                        <p-dropdown [options]="tiposImpresion" [(ngModel)]="producto.tipoImpresion" placeholder="Seleccione un tipo de impresion" 
+                              optionValue="code" optionLabel="name" [showClear]="true" 
+                              [disabled]="producto.impresion=='N'" [style]="{'width':'100%', 'float': 'right'}" ></p-dropdown>
                       </div>
                       
                       
                       <div class="col-12 md:col-4">
-                        <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
-                            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
-                            decrementButtonIcon="pi pi-minus" >
-                            </p-inputNumber> 
+                          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"  [min]="1" [max]="10"
+                              decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" 
+                              decrementButtonIcon="pi pi-minus"  [disabled]="producto.impresion=='N'"
+                              [(ngModel)]="producto.numeroColores"  >
+                          </p-inputNumber>
                       </div>
 
                       <div class="col-12 md:col-4">
                         <div class="p-inputgroup">
-                          <input type="text" pInputText >  
-                          <span class="p-inputgroup-addon">MM</span>      
+                          <p-dropdown [options]="numerosCilindro" [(ngModel)]="producto.numeroCilindro" placeholder="Seleccione un numero de cilindro" 
+                              optionValue="code" optionLabel="name" [showClear]="true"
+                              [disabled]="producto.impresion=='N'" [style]="{'width':'100%', 'float': 'right'}" ></p-dropdown> 
                         </div> 
                       </div>
                     </div>
@@ -358,40 +384,37 @@
                       <div class="col-12 md:col-1">
                         Zipper:	
                       </div>
-                      
-                      <div class="col-12 md:col-1">
-                        Válvula :	
-                      </div>
-                              
-                      <div class="col-12 md:col-5">
-                          Peso Zipper 1mL:		
-                      </div>
-
-                      
                       <div class="col-12 md:col-5">
                         Peso Válvula 1Und:
+                      </div>
+                      <div class="col-12 md:col-1">
+                        Válvula:	
+                      </div>
+                      <div class="col-12 md:col-5">
+                          Peso Zipper 1mL:		
                       </div>
                   </div>
 
                   <div class="grid p-fluid">
                     <div class="col-12 md:col-1">
-                      <p-inputSwitch ></p-inputSwitch>	
+                      <p-inputSwitch [(ngModel)]="producto.estadoZipper" (onChange)="changeZipper()" trueValue="S" falseValue="N"></p-inputSwitch>	
                     </div>
                     
-                    
-                    <div class="col-12 md:col-1">
-                      <p-inputSwitch ></p-inputSwitch>	
-                    </div>
-
                     <div class="col-12 md:col-5">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText >  
+                        <input type="text" pInputText  [(ngModel)]="producto.pesoZipperUnd"  [disabled]="producto.estadoZipper=='N'"  (input)="calcularPesoAdicional()"> 
                         <span class="p-inputgroup-addon">GR</span>      
                       </div> 
                     </div>
+                    
+                    <div class="col-12 md:col-1">
+                      <p-inputSwitch [(ngModel)]="producto.estadoValvula" (onChange)="changeValvula()" trueValue="S" falseValue="N"></p-inputSwitch>	
+                    </div>
+
+                    
                     <div class="col-12 md:col-5">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText >  
+                        <input type="text" pInputText  [(ngModel)]="producto.pesoValvulaUnd"  [disabled]="producto.estadoValvula=='N'" (input)="calcularPesoAdicional()"  >  
                         <span class="p-inputgroup-addon">GR</span>      
                       </div> 
                     </div>
@@ -401,78 +424,111 @@
                 <br>
                 <p-fieldset legend=" Estructura del Producto" >
                   <div class="grid p-fluid">
-                      <div class="col-12 md:col-1">
+                      <div class="col-12 md:col-4">
                         Peso x Millar:	
                       </div>
                       
-                      <div class="col-12 md:col-1">
-                        PesoMillarAd:	
+                      <div class="col-12 md:col-4">
+                        Peso x MillarAd:	
                       </div>
                               
-                      <div class="col-12 md:col-1">
-                        PesoMillarTotal:		
+                      <div class="col-12 md:col-4">
+                        Peso x MillarTotal:		
                       </div>
 
                       
-                      <div class="col-12 md:col-3">
-                        Tipo Producto:
-                      </div>
-
-                      <div class="col-12 md:col-2">
-                        Estructura :
-                      </div>
-                      <div class="col-12 md:col-2">
-                        Gramaje Total:
-                      </div>
-                      <div class="col-12 md:col-2">
-                        Ancho Util Des:
-                      </div>
                   </div>
 
                   <div class="grid p-fluid">
-                    <div class="col-12 md:col-1">
+                    <div class="col-12 md:col-4">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText readonly>  
-                        <span class="p-inputgroup-addon">GR</span>      
+                        <input type="text" pInputText  [(ngModel)]="producto.pesoCalculado"  [disabled]="true" > 
+                        <span class="p-inputgroup-addon">KG</span>      
                       </div> 	
                     </div>
                     
-                    <div class="col-12 md:col-1">
+                    <div class="col-12 md:col-4">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText readonly>  
-                        <span class="p-inputgroup-addon">GR</span>      
+                        <input type="text" pInputText  [(ngModel)]="producto.pesoCalculadoAdicional"  [disabled]="true" > 
+                        <span class="p-inputgroup-addon">KG</span>      
                       </div> 		
                     </div>
                             
-                    <div class="col-12 md:col-1">
+                    <div class="col-12 md:col-4">
                       <div class="p-inputgroup">
-                        <input type="text" pInputText readonly>  
-                        <span class="p-inputgroup-addon">GR</span>      
+                        <input type="text" pInputText  [(ngModel)]="producto.pesoCalculado + producto.pesoCalculadoAdicional"  [disabled]="true" > 
+                        <span class="p-inputgroup-addon">KG</span>      
                       </div> 		
                     </div>
 
                     
-                    <div class="col-12 md:col-3">
-                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
-                    </div>
-
-                    <div class="col-12 md:col-2">
-                      <p-dropdown  placeholder="Seleccione la unidad" optionLabel="name" [showClear]="true"></p-dropdown>
-                    </div>
-                    <div class="col-12 md:col-2">
-                      <div class="p-inputgroup">
-                        <input type="text" pInputText >  
-                        <span class="p-inputgroup-addon">GR/M2</span>      
-                      </div>
-                    </div>
-                    <div class="col-12 md:col-2">
-                      <div class="p-inputgroup">
-                        <input type="text" pInputText >  
-                        <span class="p-inputgroup-addon">MM</span>      
-                      </div>
-                    </div>
                 </div>
 
+                <div class="grid p-fluid">
+                 
+                  <div class="col-12 md:col-3">
+                    Tipo Producto:
+                  </div>
+
+                  <div class="col-12 md:col-3">
+                    Estructura :
+                  </div>
+                  <div class="col-12 md:col-3">
+                    Gramaje Total:
+                  </div>
+                  <div class="col-12 md:col-3">
+                    Ancho Util Des:
+                  </div>
+              </div>
+
+              <div class="grid p-fluid">
+               
+                
+                <div class="col-12 md:col-3">
+                  <p-dropdown [options]="parametrosGenerals" [(ngModel)]="producto.parametroEstadoGeneralCotizacion" optionLabel="descripcion" (onChange)="mostrarConfiguracionCotizacion()"
+                      [filter]="true" filterBy="descripcion" [showClear]="true" placeholder="Seleccione un tipo de producto">
+                      <ng-template pTemplate="selectedItem">
+                          <div class="country-item country-item-value"  *ngIf="producto.parametroEstadoGeneralCotizacion">
+                              <div>{{producto.parametroEstadoGeneralCotizacion.descripcion}}</div>
+                          </div>
+                      </ng-template>
+                      <ng-template let-parametro pTemplate="item">
+                          <div class="parametro-item">
+                              <div>{{parametro.descripcion}}</div>
+                          </div>
+                      </ng-template>
+                  </p-dropdown>
+
+                </div>
+
+                <div class="col-12 md:col-3">
+                  <p-dropdown [options]="configuracionCotizaciones" [(ngModel)]="producto.configuracionCotizacion" optionLabel="descripcion" (onChange)="crearEstructuraProducto()"
+                    [filter]="true" filterBy="descripcion" [showClear]="true" placeholder="Seleccione la estructura">
+                    <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value"  *ngIf="producto.configuracionCotizacion">
+                            <div>{{producto.configuracionCotizacion.descripcion}}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-configuracion pTemplate="item">
+                        <div class="configuracion-item">
+                            <div>{{configuracion.descripcion}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+                </div>
+                <div class="col-12 md:col-3">
+                  <div class="p-inputgroup">
+                    <input type="text" pInputText [(ngModel)]="producto.espesorGramoMt2" >  
+                    <span class="p-inputgroup-addon">GR/M2</span>      
+                  </div>
+                </div>
+                <div class="col-12 md:col-3">
+                  <div class="p-inputgroup">
+                    <input type="text" pInputText [(ngModel)]="producto.anchoUtilDesarrollo" >  
+                    <span class="p-inputgroup-addon">MM</span>      
+                  </div>
+                </div>
+            </div>
 
                 <p-table responsiveLayout="scroll" >
                       <ng-template pTemplate="header">

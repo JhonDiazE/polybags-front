@@ -8,4 +8,7 @@ export interface Categoria {
 	codigo:string;
 	estado:string;
 	densidad:number;
+	gramajeDefinido:number;
+    requiereEspesor:string;
+    precioUnitCotizacionDol:number;
 }
